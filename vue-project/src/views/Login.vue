@@ -4,7 +4,7 @@
 
     <GuestLayout title="Sign in to your account">
 
-      <form class="space-y-6" action="#" method="POST">
+      <form class="space-y-6" @submit.prevent="login" method="POST">
         <div>
           <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
           <div class="mt-2">
@@ -44,7 +44,7 @@
 import GuestLayout from '../components/GuestLayout.vue'
 
 function login(){
-    console.log()
+    console.log('Login')
 }
 
 </script>
