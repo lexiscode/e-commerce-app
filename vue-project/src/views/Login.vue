@@ -51,9 +51,13 @@ const form = ref({
     email: '',
     password: ''
 })
-
-
+/* Two Ways!
+const getToken = async () => {
+    await axios.get('/sanctum/csrf-cookie')
+}
+*/
 const handleLogin = async () => {
+    // await getToken();
     try {
         await axios.post('/login', {
             email: form.value.email,
