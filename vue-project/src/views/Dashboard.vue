@@ -2,24 +2,28 @@
 
     <h1>Welcome to Dashboard!</h1>
 
-    <p>{{ user?.name }}</p>
-    <p>{{ user?.email }}</p>
+    <div v-if="authStore.user">
+        <p>{{ authStore.user.name }}</p>
+        <p>{{ authStore.user.email }}</p>
+    </div>
+    <div v-else>
+        <p>Go to Login</p>
+    </div>
 
 </template>
 
 <script setup>
 
-import {ref, onMounted} from 'vue'
-import axios from 'axios'
+import { onMounted } from 'vue'
+import { useAuthStore } from '../store';
 
-const user = ref();
+const authStore = useAuthStore();
+
 onMounted(async () => {
-    const data = await axios.get('/api/user');
-    user.value = data.data;
+    //getToken
+    //getUser
+    await authStore.getUser();
 })
 
 </script>
 
-<style scoped>
-
-</style>
