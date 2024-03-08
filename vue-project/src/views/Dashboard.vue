@@ -1,13 +1,20 @@
-
-
 <template>
-    <h1>Dashboard</h1>
+
+    <h1>Welcome to Dashboard!</h1>
+    
 </template>
 
-<script>
-export default {
-    name: 'Dashboard'
-}
+<script setup>
+
+import {ref, onMounted} from 'vue'
+import axios from 'axios'
+
+const user = ref();
+onMounted(async () => {
+    const data = await axios.get('/api/user');
+    console.log(data);
+})
+
 </script>
 
 <style scoped>

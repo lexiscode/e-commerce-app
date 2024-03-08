@@ -1,11 +1,12 @@
 <script setup>
-
+import Navbar from "./views/Navbar.vue";
 </script>
 
 <template>
-    <router-view></router-view>
+    <main>
+        <Navbar />
+        <router-view></router-view>
+    </main>
 </template>
 
-<style>
-
-</style>
+<style></style>

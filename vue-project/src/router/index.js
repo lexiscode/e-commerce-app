@@ -1,19 +1,20 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Dashboard from "../views/Dashboard.vue";
 import Login from "../views/Login.vue";
+import Register from "../views/Register.vue";
 import ForgotPassword from "../views/ForgotPassword.vue";
 import ResetPassword from "../views/ResetPassword.vue";
 
 const routes = [
     {
-        path: "/dashboard",
-        name: "dashboard",
-        component: Dashboard,
-    },
-    {
         path: "/login",
         name: "login",
         component: Login,
+    },
+    {
+        path: "/register",
+        name: "register",
+        component: Register,
     },
     {
         path: "/forgot-password",
@@ -24,6 +25,11 @@ const routes = [
         path: "/reset-password/token",
         name: "reset-password",
         component: ResetPassword,
+    },
+    {
+        path: "/dashboard",
+        name: "dashboard",
+        component: Dashboard,
     },
 ];
 
