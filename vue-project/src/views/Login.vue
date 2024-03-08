@@ -55,7 +55,7 @@ const form = ref({
 
 const handleLogin = async () => {
     try {
-        const response = await axios.post('/login', {
+        await axios.post('/login', {
             email: form.value.email,
             password: form.value.password
         }, {
