@@ -51,7 +51,7 @@ const form = ref({
     email: '',
     password: ''
 })
-/* Two Ways!
+/* Two Ways of getting token!
 const getToken = async () => {
     await axios.get('/sanctum/csrf-cookie')
 }
@@ -59,12 +59,18 @@ const getToken = async () => {
 const handleLogin = async () => {
     // await getToken();
     try {
+        // Fetch CSRF token
+        const response = await axios.get('/csrf-token');
+        const csrfToken = response.data.token;
+        //console.log(csrfToken);
+
+        // Make login request
         await axios.post('/login', {
             email: form.value.email,
             password: form.value.password
         }, {
             headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                'X-CSRF-TOKEN': csrfToken
             }
         });
         router.push('/dashboard');

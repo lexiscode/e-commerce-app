@@ -60,6 +60,7 @@ import axios from 'axios'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+
 const form = ref({
     name: '',
     email: '',
@@ -69,22 +70,28 @@ const form = ref({
 
 const handleRegistration = async () => {
     try {
+        // Fetch CSRF token
+        const response = await axios.get('/csrf-token');
+        const csrfToken = response.data.token;
+        // console.log(csrfToken);
+
+        // Make registration request
         await axios.post('/register', {
-        name: form.value.name,
-        email: form.value.email,
-        password: form.value.password,
-        password_confirmation: form.value.password_confirmation
-    }, {
-        headers: {
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-        }
-    })
-    router.push('/');
+            name: form.value.name,
+            email: form.value.email,
+            password: form.value.password,
+            password_confirmation: form.value.password_confirmation
+        }, {
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            }
+        });
+
+        router.push('/dashboard');
 
     } catch (error) {
         console.error('Register error:', error);
     }
-
 }
 
 </script>
