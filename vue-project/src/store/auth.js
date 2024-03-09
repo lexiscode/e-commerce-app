@@ -40,12 +40,12 @@ export const useAuthStore = defineStore("auth", {
             await axios.post("/logout");
             this.authUser = null;
         },
-        async handleForgotPassword(data) {
+        async handleForgotPassword(email) {
             this.authErrors = [];
             await this.getToken();
             try {
                 await axios.post("/forgot-password", {
-                    email: data.email,
+                    email: email
                 });
             } catch (error) {
                 if (error.response.status === 422) {
