@@ -4,18 +4,27 @@
 
       <form class="space-y-6" @submit.prevent="authStore.handleResetPassword(form)">
 
+        <div v-if="authStore.status" class="m-2 p-2 text-green-900 font-semibold bg-green-300 rounded-md">
+            {{ authStore.status }}
+        </div>
+
         <div class="flex items-center justify-between">
             <label for="password" class="block text-sm font-medium leading-6 text-gray-900">New Password</label>
         </div>
         <div class="mt-2">
-        <input id="password" v-model="form.password" type="password" autocomplete="current-password" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+        <input id="password" v-model="form.password" type="password" autocomplete="current-password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+        </div>
+        <div v-if="authStore.errors.password">
+            <span class="text-red-400 text-sm m-2 p-2">
+                {{ authStore.errors.password[0] }}
+            </span>
         </div>
 
         <div class="flex items-center justify-between">
             <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Repeat Password</label>
         </div>
         <div class="mt-2">
-        <input id="password" v-model="form.password_confirmation"  type="password" autocomplete="current-password" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+        <input id="password" v-model="form.password_confirmation"  type="password" autocomplete="current-password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
         </div>
 
         <div>

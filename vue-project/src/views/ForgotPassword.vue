@@ -3,6 +3,11 @@
     <GuestLayout title="Forgot Password">
 
         <form class="space-y-6" @submit.prevent="authStore.handleForgotPassword(email)">
+
+            <div v-if="authStore.status" class="m-2 p-2 text-green-900 font-semibold bg-green-300 rounded-md">
+                {{ authStore.status }}
+            </div>
+
             <div>
                 <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                 <div class="mt-2">
