@@ -13,10 +13,19 @@ export const useAuthStore = defineStore("auth", {
             await axios.get('/csrf-token')
         },
         async getUser() {
-            this.getToken()
+            await this.getToken()
             const data = await axios.get('/api/user')
             this.authUser = data.data
+        },
+        async handleLogin(data) {
+            await this.getToken();
+            // Make login request
+            await axios.post('/login', {
+                email: data.email,
+                password: data.password
+            });
+            // router config from main.js btw
+            this.router.push('/dashboard');
         }
     },
 });
-

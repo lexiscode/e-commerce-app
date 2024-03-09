@@ -9,6 +9,7 @@
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        // the views forms are placed here
         <slot></slot>
     </div>
 

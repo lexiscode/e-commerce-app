@@ -1,5 +1,4 @@
 <template>
-
     <h1>Welcome to Dashboard!</h1>
 
     <div v-if="authStore.user">
@@ -9,21 +8,17 @@
     <div v-else>
         <p>Go to Login</p>
     </div>
-
 </template>
 
 <script setup>
-
-import { onMounted } from 'vue'
-import { useAuthStore } from '../store';
+import { onMounted } from "vue";
+import { useAuthStore } from "../store/auth.js";
 
 const authStore = useAuthStore();
 
 onMounted(async () => {
-    //getToken
-    //getUser
+    //getToken and getUser
     await authStore.getUser();
-})
-
+});
 </script>
-
+../store/auth

@@ -68,7 +68,14 @@ const form = ref({
     password_confirmation: ''
 })
 
+/* Two Ways of getting token!
+const getToken = async () => {
+    await axios.get('/sanctum/csrf-cookie')
+}
+*/
+
 const handleRegistration = async () => {
+    // await getToken();
     try {
         // Fetch CSRF token
         const response = await axios.get('/csrf-token');
