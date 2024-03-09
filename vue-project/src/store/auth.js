@@ -26,6 +26,10 @@ export const useAuthStore = defineStore("auth", {
             });
             // router config from main.js btw
             this.router.push('/dashboard');
+        },
+        async handleLogout(){
+            await axios.post('/logout');
+            this.authUser = null;
         }
     },
 });

@@ -1,3 +1,5 @@
+<!-- https://tailwindui.com/components/application-ui/navigation/navbars -->
+
 <template>
   <Disclosure as="nav" class="bg-gray-800" v-slot="{ open }">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -17,7 +19,18 @@
           </div>
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
-              <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
+
+                <template v-if="!authStore.user">
+                    <!-- Hardcoded navigation items -->
+                    <a href="/" :class="[navigation[0].current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="navigation[0].current ? 'page' : undefined">Home</a>
+                    <a href="/login" :class="[navigation[1].current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="navigation[1].current ? 'page' : undefined">Login</a>
+                    <a href="/register" :class="[navigation[2].current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="navigation[2].current ? 'page' : undefined">Register</a>
+                </template>
+                <template v-else>
+                    <a href="/" :class="[navigation[0].current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="navigation[0].current ? 'page' : undefined">Home</a>
+                    <a href="/logout" @click="authStore.handleLogout" :class="[navigation[1].current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="navigation[0].current ? 'page' : undefined">Logout</a>
+                </template>
+
             </div>
           </div>
         </div>
@@ -64,6 +77,9 @@
 </template>
 
 <script setup>
+import {useAuthStore} from '../store/auth'
+
+// this here is from the navbar tailwind template
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 
@@ -72,4 +88,7 @@ const navigation = [
   { name: 'Login', href: '/login', current: false },
   { name: 'Register', href: '/register', current: false },
 ]
+
+const authStore = useAuthStore();
+
 </script>
