@@ -11,6 +11,7 @@
 </template>
 
 <script setup>
+
 import { onMounted } from "vue";
 import { useAuthStore } from "../store/auth";
 
@@ -20,5 +21,6 @@ onMounted(async () => {
     //getToken and getUser
     await authStore.getUser();
 });
+
 </script>
-../store/auth
+

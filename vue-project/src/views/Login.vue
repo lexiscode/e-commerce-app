@@ -7,8 +7,8 @@
                 <label
                     for="email"
                     class="block text-sm font-medium leading-6 text-gray-900"
-                    >Email address</label
-                >
+                    >Email address
+                </label>
                 <div class="mt-2">
                     <input
                         id="email"
@@ -34,10 +34,10 @@
                         >Password</label
                     >
                     <div class="text-sm">
-                        <a
-                            href="/forgot-password"
+                        <router-link
+                            to="/forgot-password"
                             class="font-semibold text-indigo-600 hover:text-indigo-500"
-                            >Forgot password?</a
+                            >Forgot password?</router-link
                         >
                     </div>
                 </div>
@@ -70,11 +70,11 @@
 
         <p class="mt-10 text-center text-sm text-gray-500">
             Not a member yet?
-            <a
-                href="/register"
+            <router-link
+                to="/register"
                 class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-                >Sign Up!</a
-            >
+                >Sign Up!
+            </router-link>
         </p>
     </GuestLayout>
 </template>
@@ -91,4 +91,5 @@ const form = ref({
     email: "",
     password: "",
 });
+
 </script>

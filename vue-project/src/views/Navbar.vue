@@ -22,13 +22,13 @@
 
                 <template v-if="!authStore.user">
                     <!-- Hardcoded navigation items -->
-                    <a href="/" :class="[navigation[0].current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="navigation[0].current ? 'page' : undefined">Home</a>
-                    <a href="/login" :class="[navigation[1].current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="navigation[1].current ? 'page' : undefined">Login</a>
-                    <a href="/register" :class="[navigation[2].current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="navigation[2].current ? 'page' : undefined">Register</a>
+                    <router-link to="/" :class="[navigation[0].current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="navigation[0].current ? 'page' : undefined">Home</router-link>
+                    <router-link to="/login" :class="[navigation[1].current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="navigation[1].current ? 'page' : undefined">Login</router-link>
+                    <router-link to="/register" :class="[navigation[2].current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="navigation[2].current ? 'page' : undefined">Register</router-link>
                 </template>
                 <template v-else>
-                    <a href="/" :class="[navigation[0].current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="navigation[0].current ? 'page' : undefined">Home</a>
-                    <a href="/logout" @click="authStore.handleLogout" :class="[navigation[1].current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="navigation[0].current ? 'page' : undefined">Logout</a>
+                    <router-link to="/" :class="[navigation[0].current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="navigation[0].current ? 'page' : undefined">Home</router-link>
+                    <router-link to="/" @click="authStore.handleLogout" :class="[navigation[1].current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="navigation[0].current ? 'page' : undefined">Logout</router-link>
                 </template>
 
             </div>

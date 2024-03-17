@@ -2,7 +2,7 @@
 
     <GuestLayout title="Forgot Password">
 
-        <form class="space-y-6" @submit.prevent="authStore.handleForgotPassword(email)">
+        <form class="space-y-6" @submit.prevent="authStore.handleForgotPassword(form)">
 
             <div v-if="authStore.status" class="m-2 p-2 text-green-900 font-semibold bg-green-300 rounded-md">
                 {{ authStore.status }}
@@ -11,7 +11,7 @@
             <div>
                 <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                 <div class="mt-2">
-                    <input id="email" v-model="email" type="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                    <input id="email" v-model="form.email" type="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                 </div>
                 <div v-if="authStore.errors.email">
                     <span class="text-red-400 text-sm m-2 p-2">
@@ -41,6 +41,8 @@ import { useAuthStore } from "../store/auth";
 
 const authStore = useAuthStore();
 
-const email = ref('');
+const form = ref({
+    email: ''
+});
 
 </script>

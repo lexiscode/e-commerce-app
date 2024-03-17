@@ -42,13 +42,11 @@ export const useAuthStore = defineStore("auth", {
             await axios.post("/logout");
             this.authUser = null;
         },
-        async handleForgotPassword(email) {
+        async handleForgotPassword(sendEmail) {
             this.authErrors = [];
             await this.getToken();
             try {
-                const response = await axios.post("/forgot-password", {
-                    email: email,
-                });
+                const response = await axios.post("/forgot-password", sendEmail);
                 this.authStatus = response.data.status;
             } catch (error) {
                 if (error.response.status === 422) {
