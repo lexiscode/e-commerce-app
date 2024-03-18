@@ -80,6 +80,7 @@
 </template>
 
 <script setup>
+
 import GuestLayout from "../components/GuestLayout.vue";
 
 import { ref } from "vue";

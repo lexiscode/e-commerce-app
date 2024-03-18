@@ -10,16 +10,37 @@
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <!-- the views forms are placed here -->
-            <slot></slot>
+            <slot>
+                <router-view></router-view>
+            </slot>
+
         </div>
     </div>
 
 </template>
 
 <script setup>
-    const {title} = defineProps({
-        title: String
-    })
+
+import { onMounted } from "vue";
+import { useAuthStore } from "../store/auth";
+import { useRouter } from "vue-router";
+
+const authStore = useAuthStore();
+const router = useRouter();
+
+onMounted(async () => {
+  await authStore.getUser();
+
+  // Redirecting to the dashboard route if user is logged in
+  if (authStore.user) {
+    router.push({ name: 'dashboard' });
+  }
+});
+
+const {title} = defineProps({
+    title: String
+})
+
 </script>
 
 <style scoped>
